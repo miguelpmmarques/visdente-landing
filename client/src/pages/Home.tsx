@@ -4,8 +4,8 @@
  * This component consumes data from the JSON file
  */
 
-import { useEffect, useRef } from "react";
-import { Mail, MapPin, Phone, Clock, Linkedin, Twitter } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Smartphone, MapPin, Phone} from "lucide-react";
 import content from "@/data/content.json";
 
 // ─── Scroll fade-in hook ───────────────────────────────────────────────────
@@ -35,9 +35,12 @@ function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
       <div className="container flex items-center justify-between h-16">
-        <a href="#" className="font-display text-xl font-semibold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-          {navbar.logo}
-          <span style={{ color: "#890000" }}>.</span>
+        <a href="#" className="flex items-center gap-2" style={{ textDecoration: 'none' }}>
+          <img src="/images/favicon.ico" alt="Logo" className="w-8 h-8" />
+          <span className="font-display text-xl font-semibold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+            {navbar.logo}
+            <span style={{ color: "#890000" }}>.</span>
+          </span>
         </a>
         <nav className="hidden md:flex items-center gap-8">
           {navbar.navLinks.map((link) => (
@@ -50,17 +53,11 @@ function Navbar() {
             </a>
           ))}
         </nav>
-        <a
-          href={navbar.cta.href}
-          className="hidden md:inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md"
-          style={{ background: "#890000" }}
-        >
-          {navbar.cta.label}
-        </a>
       </div>
     </header>
   );
 }
+
 
 // ─── Hero / Title Section ─────────────────────────────────────────────────
 function HeroSection() {
@@ -105,16 +102,15 @@ function HeroSection() {
             </div>
           </div>
           {/* Right: Hero image */}
-          <div className="relative">
-          <div
-            className="absolute -inset-4 rounded-3xl opacity-30"
-            style={{ background: "#FFF5E6" }}
-          />
+          <div className="relative flex justify-center">
+            <div
+              className="absolute -inset-4 rounded-3xl opacity-30"
+              style={{ background: "#FFF5E6" }}
+            />
             <img
               src={hero.heroImage.src}
               alt={hero.heroImage.alt}
-              className="relative w-2/3 object-cover"
-              
+              className="relative w-1/2 object-cover"
             />
           </div>
         </div>
@@ -237,6 +233,96 @@ function TeamCard({
   );
 }
 
+// ─── Treatments Section (Carousel) ───────────────────────────────────────
+function TreatmentsSection() {
+  const { treatments } = content;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const ref = useFadeIn();
+  
+  const nextTreatment = () => {
+    setCurrentIndex((prev) => (prev + 1) % treatments.items.length);
+  };
+  
+  const prevTreatment = () => {
+    setCurrentIndex((prev) => (prev - 1 + treatments.items.length) % treatments.items.length);
+  };
+  
+  const currentTreatment = treatments.items[currentIndex];
+  
+  return (
+    <section id="treatments" className="py-20 md:py-28">
+      <div className="container">
+        <div ref={ref} className="fade-in-up">
+          <div className="text-center mb-12">
+            <span className="section-label block mb-3">{treatments.section}</span>
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {treatments.headline}
+            </h2>
+            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              {treatments.description}
+            </p>
+          </div>
+          
+          {/* Carousel */}
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm mb-8">
+              <div className="text-center mb-6">
+                <h3
+                  className="text-3xl font-bold mb-4"
+                  style={{ fontFamily: "var(--font-display)", color: "#890000" }}
+                >
+                  {currentTreatment.name}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {currentTreatment.description}
+                </p>
+              </div>
+              
+              {/* Carousel indicators */}
+              <div className="flex justify-center gap-2 mb-6">
+                {treatments.items.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className="w-2 h-2 rounded-full transition-all duration-300"
+                    style={{
+                      background: index === currentIndex ? "#890000" : "#e5e7eb"
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Navigation buttons */}
+            <div className="flex justify-between items-center gap-4">
+              <button
+                onClick={prevTreatment}
+                className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
+                style={{ background: "#890000" }}
+              >
+                ← Anterior
+              </button>
+              <span className="text-sm text-muted-foreground">
+                {currentIndex + 1} / {treatments.items.length}
+              </span>
+              <button
+                onClick={nextTreatment}
+                className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
+                style={{ background: "#890000" }}
+              >
+                Proximo →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Location Section ─────────────────────────────────────────────────────
 function LocationSection() {
   const { location } = content;
@@ -313,7 +399,6 @@ function InfoRow({
 }
 
 // ─── Contact Section ──────────────────────────────────────────────────────
-// ─── Contact Section ──────────────────────────────────────────────────────
 function ContactSection() {
   const { contact } = content;
   const ref = useFadeIn();
@@ -361,12 +446,12 @@ function ContactSection() {
                     className="w-10 h-10 rounded-lg flex items-center justify-center"
                     style={{ background: "#FFF5E6", color: "#890000" }}
                   >
-                    <Mail size={20} />
+                    <Smartphone size={20} />
                   </div>
                   <span className="font-semibold text-foreground">Telemóvel</span>
                 </div>
                 <a
-                  href={`mailto:${contact.mobilephone}`}
+                  href={`tel:${contact.mobilephone}`}
                   className="text-sm sm:text-lg text-primary hover:opacity-80 transition-opacity break-all"
                 >
                   {contact.mobilephone}
@@ -414,6 +499,7 @@ export default function Home() {
         <HeroSection />
         <DescriptionSection />
         <TeamSection />
+        <TreatmentsSection />
         <LocationSection />
         <ContactSection />
       </main>
