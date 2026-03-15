@@ -10,6 +10,7 @@
       { "label": "Sobre nós", "href": "#about" },
       { "label": "Equipa", "href": "#team" },
       { "label": "Tratamentos", "href": "#treatments" },
+      { "label": "Fotografias", "href": "#photos" },
       { "label": "Localização", "href": "#location" },
       { "label": "Contacto", "href": "#contact" }
     ]
@@ -40,7 +41,7 @@
   },
   "about": {
     "section": "Sobre nós",
-    "headline": "We craft purposeful experiences that endure.",
+    "headline": "Clínica Dentária",
     "paragraphs": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -183,6 +184,30 @@
       }
     ]
   },
+  "photos":{
+    "section": "Clinica",
+    "headline": "Fotografias da Clinica",
+    "items": [
+      {
+        "id": 1,
+        "name": "Recepção",
+        "description": "",
+        "image": "/images/logo.png"
+      },
+      {
+        "id": 2,
+        "name": "Consultorio",
+        "description": "",
+        "image": "/images/logo.png"
+      },
+      {
+        "id": 3,
+        "name": "Casa de banho",
+        "description": "",
+        "image": "/images/logo.png"
+      }
+    ]
+  },
   "location": {
     "section": "Encontre-nos",
     "headline": "A nossa localização",
@@ -206,8 +231,6 @@
   "footer": {
     "copyright": "All rights reserved.",
     "links": [
-      { "label": "Privacy", "href": "#" },
-      { "label": "Terms", "href": "#" }
     ]
   }
 }

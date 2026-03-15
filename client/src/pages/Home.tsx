@@ -250,7 +250,7 @@ function TreatmentsSection() {
   const currentTreatment = treatments.items[currentIndex];
   
   return (
-    <section id="treatments" className="py-20 md:py-28">
+    <section id="treatments" className="py-20 md:py-28" style={{ background: "#ffffff" }}>
       <div className="container">
         <div ref={ref} className="fade-in-up">
           <div className="text-center mb-12">
@@ -310,6 +310,104 @@ function TreatmentsSection() {
               </span>
               <button
                 onClick={nextTreatment}
+                className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
+                style={{ background: "#890000" }}
+              >
+                Proximo →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Photos Section (Carousel) ───────────────────────────────────────
+function PhotosSection() {
+  const { photos } = content;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const ref = useFadeIn();
+  
+  const nextPhoto = () => {
+    setCurrentIndex((prev) => (prev + 1) % photos.items.length);
+  };
+  
+  const prevPhoto = () => {
+    setCurrentIndex((prev) => (prev - 1 + photos.items.length) % photos.items.length);
+  };
+  
+  const currentPhoto = photos.items[currentIndex];
+  
+  return (
+    <section id="photos" className="py-20 md:py-28">
+      <div className="container">
+        <div ref={ref} className="fade-in-up">
+          <div className="text-center mb-12">
+            <span className="section-label block mb-3">{photos.section}</span>
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {photos.headline}
+            </h2>
+            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              {photos.description}
+            </p>
+            
+          </div>
+          
+          {/* Carousel */}
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm mb-8">
+              <div className="text-center mb-6">
+                <h3
+                  className="text-3xl font-bold mb-4"
+                  style={{ fontFamily: "var(--font-display)", color: "#890000" }}
+                >
+                  {currentPhoto.name}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {currentPhoto.description}
+                </p>
+                <div className="relative flex justify-center">
+                  <img
+                    src={currentPhoto.image}
+                    alt={currentPhoto.headline}
+                    className="relative w-1/2 object-cover"
+                  />
+                </div>
+              </div>
+              
+              {/* Carousel indicators */}
+              <div className="flex justify-center gap-2 mb-6">
+                {photos.items.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className="w-2 h-2 rounded-full transition-all duration-300"
+                    style={{
+                      background: index === currentIndex ? "#890000" : "#e5e7eb"
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Navigation buttons */}
+            <div className="flex justify-between items-center gap-4">
+              <button
+                onClick={prevPhoto}
+                className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
+                style={{ background: "#890000" }}
+              >
+                ← Anterior
+              </button>
+              <span className="text-sm text-muted-foreground">
+                {currentIndex + 1} / {photos.items.length}
+              </span>
+              <button
+                onClick={nextPhoto}
                 className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
                 style={{ background: "#890000" }}
               >
@@ -500,6 +598,7 @@ export default function Home() {
         <DescriptionSection />
         <TeamSection />
         <TreatmentsSection />
+        <PhotosSection />
         <LocationSection />
         <ContactSection />
       </main>
