@@ -7,6 +7,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Smartphone, MapPin, Phone} from "lucide-react";
 import content from "@/data/content.json";
+import "./PhotosSection.css"; // we’ll create this
+
 
 // ─── Scroll fade-in hook ───────────────────────────────────────────────────
 function useFadeIn() {
@@ -234,8 +236,6 @@ function TeamCard({
 }
 
 // ─── Treatments Section (Carousel) ───────────────────────────────────────
-// ─── Treatments Section (Carousel) ───────────────────────────────────────
-// ─── Treatments Section (Carousel) ───────────────────────────────────────
 function TreatmentsSection() {
   const { treatments } = content;
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -366,127 +366,102 @@ function TreatmentsSection() {
     </section>
   );
 }
+
 // ─── Photos Section (Carousel) ───────────────────────────────────────
+
 function PhotosSection() {
   const { photos } = content;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const ref = useFadeIn();
+  const [arrow, setArrow] = useState(null); // "left" or "right"
+  const [fadeIn, setFadeIn] = useState(false);
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
+  // fade-in section
+  useEffect(() => setFadeIn(true), []);
+
   const nextPhoto = () => {
+    setArrow("right");
     setCurrentIndex((prev) => (prev + 1) % photos.items.length);
   };
 
   const prevPhoto = () => {
+    setArrow("left");
     setCurrentIndex((prev) => (prev - 1 + photos.items.length) % photos.items.length);
   };
 
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.targetTouches[0].clientX;
-  };
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.targetTouches[0].clientX;
-  };
-
+  const handleTouchStart = (e) => (touchStartX.current = e.targetTouches[0].clientX);
+  const handleTouchMove = (e) => (touchEndX.current = e.targetTouches[0].clientX);
   const handleTouchEnd = () => {
     const distance = touchStartX.current - touchEndX.current;
-
-    if (distance > 50) {
-      nextPhoto(); // swipe left
-    } else if (distance < -50) {
-      prevPhoto(); // swipe right
-    }
+    if (distance > 50) nextPhoto();
+    else if (distance < -50) prevPhoto();
   };
 
   const currentPhoto = photos.items[currentIndex];
 
   return (
-    <section id="photos" className="py-20 md:py-28">
+    <section className={`photos-section ${fadeIn ? "fade-in" : ""}`}>
       <div className="container">
-        <div ref={ref} className="fade-in-up">
-          <div className="text-center mb-12">
-            <span className="section-label block mb-3">{photos.section}</span>
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-4"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {photos.headline}
-            </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              {photos.description}
-            </p>
-          </div>
+        <div className="header">
+          <span className="section-label">{photos.section}</span>
+          <h2 className="headline">{photos.headline}</h2>
+        </div>
 
-          {/* Carousel */}
-          <div className="max-w-4xl mx-auto">
-            <div
-              className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm mb-8"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              <div className="text-center mb-6">
-                <h3
-                  className="text-3xl font-bold mb-4"
-                  style={{ fontFamily: "var(--font-display)", color: "#890000" }}
-                >
-                  {currentPhoto.name}
-                </h3>
-
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  {currentPhoto.description}
-                </p>
-
-                <div className="flex justify-center">
-                  <img
-                    src={currentPhoto.image}
-                    alt={currentPhoto.headline}
-                    className="w-full max-w-xl mx-auto object-cover rounded-xl shadow-md"
-                  />
-                </div>
-              </div>
-
-              {/* Carousel indicators */}
-              <div className="flex justify-center gap-2 mb-6">
-                {photos.items.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className="w-2 h-2 rounded-full transition-all duration-300"
-                    style={{
-                      background:
-                        index === currentIndex ? "#890000" : "#e5e7eb",
-                    }}
-                  />
-                ))}
-              </div>
+        <div className="carousel">
+          <div
+            className="carousel-card"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div className="photo-info">
+              <h3 className="photo-name">{currentPhoto.name}</h3>
+              <p className="photo-description">{currentPhoto.description}</p>
             </div>
 
-            {/* Navigation buttons */}
-            <div className="flex justify-between items-center gap-4">
-              <button
-                onClick={prevPhoto}
-                className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
-                style={{ background: "#890000" }}
-              >
-                ← Anterior
-              </button>
+            <div className="photo-container">
+              <img src={currentPhoto.image} alt={currentPhoto.name} className="photo-image" />
 
-              <span className="text-sm text-muted-foreground">
-                {currentIndex + 1} / {photos.items.length}
+              {/* Left arrow */}
+              <span
+                key={arrow + currentIndex} // force remount/retrigger
+                className={`arrow arrow-left ${arrow === "left" ? "animate-fade-slide-left" : ""}`}
+              >
+                ←
               </span>
 
-              <button
-                onClick={nextPhoto}
-                className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
-                style={{ background: "#890000" }}
+              {/* Right arrow */}
+              <span
+                key={arrow + currentIndex + "r"} // different key for right
+                className={`arrow arrow-right ${arrow === "right" ? "animate-fade-slide-right" : ""}`}
               >
-                Proximo →
-              </button>
+                →
+              </span>
             </div>
+
+            <div className="indicators">
+              {photos.items.map((_, index) => (
+                <button
+                  key={index}
+                  className={`indicator ${index === currentIndex ? "active" : ""}`}
+                  onClick={() => setCurrentIndex(index)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="nav-buttons">
+            <button className="nav-btn" onClick={prevPhoto}>
+              ← Anterior
+            </button>
+            <span className="counter">
+              {currentIndex + 1} / {photos.items.length}
+            </span>
+            <button className="nav-btn" onClick={nextPhoto}>
+              Proximo →
+            </button>
           </div>
         </div>
       </div>

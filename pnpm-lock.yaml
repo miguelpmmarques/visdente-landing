@@ -201,7 +201,7 @@ importers:
         specifier: ^2.0.6
         version: 2.0.6
       autoprefixer:
-        specifier: ^10.4.20
+        specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.6)
       esbuild:
         specifier: ^0.25.0
@@ -210,7 +210,7 @@ importers:
         specifier: ^10.15.1
         version: 10.18.1
       postcss:
-        specifier: ^8.4.47
+        specifier: ^8.5.6
         version: 8.5.6
       prettier:
         specifier: ^3.6.2
