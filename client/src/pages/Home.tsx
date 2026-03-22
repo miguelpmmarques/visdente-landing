@@ -234,27 +234,56 @@ function TeamCard({
 }
 
 // ─── Treatments Section (Carousel) ───────────────────────────────────────
+// ─── Treatments Section (Carousel) ───────────────────────────────────────
+// ─── Treatments Section (Carousel) ───────────────────────────────────────
 function TreatmentsSection() {
   const { treatments } = content;
   const [currentIndex, setCurrentIndex] = useState(0);
   const ref = useFadeIn();
-  
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const nextTreatment = () => {
     setCurrentIndex((prev) => (prev + 1) % treatments.items.length);
   };
-  
+
   const prevTreatment = () => {
     setCurrentIndex((prev) => (prev - 1 + treatments.items.length) % treatments.items.length);
   };
-  
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchStartX.current - touchEndX.current;
+
+    if (distance > 50) {
+      nextTreatment(); // swipe left
+    } else if (distance < -50) {
+      prevTreatment(); // swipe right
+    }
+  };
+
   const currentTreatment = treatments.items[currentIndex];
-  
+
   return (
-    <section id="treatments" className="py-20 md:py-28" style={{ background: "#ffffff" }}>
+    <section
+      id="treatments"
+      className="py-20 md:py-28"
+      style={{ background: "#ffffff" }}
+    >
       <div className="container">
         <div ref={ref} className="fade-in-up">
           <div className="text-center mb-12">
-            <span className="section-label block mb-3">{treatments.section}</span>
+            <span className="section-label block mb-3">
+              {treatments.section}
+            </span>
             <h2
               className="text-4xl md:text-5xl font-bold mb-4"
               style={{ fontFamily: "var(--font-display)" }}
@@ -265,37 +294,50 @@ function TreatmentsSection() {
               {treatments.description}
             </p>
           </div>
-          
+
           {/* Carousel */}
           <div className="max-w-3xl mx-auto">
-            <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm mb-8">
-              <div className="text-center mb-6">
-                <h3
-                  className="text-3xl font-bold mb-4"
-                  style={{ fontFamily: "var(--font-display)", color: "#890000" }}
-                >
-                  {currentTreatment.name}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {currentTreatment.description}
-                </p>
+            <div
+              className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm mb-8 flex flex-col min-h-[320px]"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Centered content */}
+              <div className="flex-1 flex items-center justify-center text-center">
+                <div>
+                  <h3
+                    className="text-2xl md:text-3xl font-bold mb-4"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#890000",
+                    }}
+                  >
+                    {currentTreatment.name}
+                  </h3>
+
+                  <p className="text-muted-foreground leading-relaxed">
+                    {currentTreatment.description}
+                  </p>
+                </div>
               </div>
-              
-              {/* Carousel indicators */}
-              <div className="flex justify-center gap-2 mb-6">
+
+              {/* Carousel indicators (always bottom) */}
+              <div className="flex justify-center gap-2 mt-6">
                 {treatments.items.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className="w-2 h-2 rounded-full transition-all duration-300"
                     style={{
-                      background: index === currentIndex ? "#890000" : "#e5e7eb"
+                      background:
+                        index === currentIndex ? "#890000" : "#e5e7eb",
                     }}
                   />
                 ))}
               </div>
             </div>
-            
+
             {/* Navigation buttons */}
             <div className="flex justify-between items-center gap-4">
               <button
@@ -305,9 +347,11 @@ function TreatmentsSection() {
               >
                 ← Anterior
               </button>
+
               <span className="text-sm text-muted-foreground">
                 {currentIndex + 1} / {treatments.items.length}
               </span>
+
               <button
                 onClick={nextTreatment}
                 className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"
@@ -322,23 +366,43 @@ function TreatmentsSection() {
     </section>
   );
 }
-
 // ─── Photos Section (Carousel) ───────────────────────────────────────
 function PhotosSection() {
   const { photos } = content;
   const [currentIndex, setCurrentIndex] = useState(0);
   const ref = useFadeIn();
-  
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const nextPhoto = () => {
     setCurrentIndex((prev) => (prev + 1) % photos.items.length);
   };
-  
+
   const prevPhoto = () => {
     setCurrentIndex((prev) => (prev - 1 + photos.items.length) % photos.items.length);
   };
-  
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchStartX.current - touchEndX.current;
+
+    if (distance > 50) {
+      nextPhoto(); // swipe left
+    } else if (distance < -50) {
+      prevPhoto(); // swipe right
+    }
+  };
+
   const currentPhoto = photos.items[currentIndex];
-  
+
   return (
     <section id="photos" className="py-20 md:py-28">
       <div className="container">
@@ -354,12 +418,16 @@ function PhotosSection() {
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               {photos.description}
             </p>
-            
           </div>
-          
+
           {/* Carousel */}
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm mb-8">
+          <div className="max-w-4xl mx-auto">
+            <div
+              className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm mb-8"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <div className="text-center mb-6">
                 <h3
                   className="text-3xl font-bold mb-4"
@@ -367,18 +435,20 @@ function PhotosSection() {
                 >
                   {currentPhoto.name}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+
+                <p className="text-muted-foreground leading-relaxed mb-6">
                   {currentPhoto.description}
                 </p>
-                <div className="relative flex justify-center">
+
+                <div className="flex justify-center">
                   <img
                     src={currentPhoto.image}
                     alt={currentPhoto.headline}
-                    className="relative w-1/2 object-cover"
+                    className="w-full max-w-xl mx-auto object-cover rounded-xl shadow-md"
                   />
                 </div>
               </div>
-              
+
               {/* Carousel indicators */}
               <div className="flex justify-center gap-2 mb-6">
                 {photos.items.map((_, index) => (
@@ -387,13 +457,14 @@ function PhotosSection() {
                     onClick={() => setCurrentIndex(index)}
                     className="w-2 h-2 rounded-full transition-all duration-300"
                     style={{
-                      background: index === currentIndex ? "#890000" : "#e5e7eb"
+                      background:
+                        index === currentIndex ? "#890000" : "#e5e7eb",
                     }}
                   />
                 ))}
               </div>
             </div>
-            
+
             {/* Navigation buttons */}
             <div className="flex justify-between items-center gap-4">
               <button
@@ -403,9 +474,11 @@ function PhotosSection() {
               >
                 ← Anterior
               </button>
+
               <span className="text-sm text-muted-foreground">
                 {currentIndex + 1} / {photos.items.length}
               </span>
+
               <button
                 onClick={nextPhoto}
                 className="px-6 py-3 rounded-md font-semibold transition-all duration-200 text-white hover:opacity-90 hover:shadow-lg"

@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "Visdente",
-    "tagline": "We craft purposeful experiences that endure.",
+    "tagline": "Clinica Médica Dentaria ",
     "year": 2026
   },
   "navbar": {
@@ -21,7 +21,7 @@
       "line1": "Visdente",
       "line2Italic": "Clinica Médica Dentaria"
     },
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.",
+    "description": "[INSERIR TEXTO]",
     "buttons": [
       {
         "label": "Sobre nós",
@@ -43,10 +43,10 @@
     "section": "Sobre nós",
     "headline": "Clínica Dentária",
     "paragraphs": [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "[INSERIR TEXTO]",
+      ""
     ],
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "quote": "[INSERIR TEXTO]"
   },
   "team": {
     "section": "Equipa",
@@ -63,7 +63,7 @@
         "id": 2,
         "name": "Paula Martins",
         "role": "Médica Dentista",
-        "bio": "Licenciado pela Faculdade de Medicina\nUniversidade De Coimbra",
+        "bio": "Licenciada pela Faculdade de Medicina\nUniversidade De Coimbra",
         "image": "/images/logo.png"
       },
       {
@@ -190,21 +190,39 @@
     "items": [
       {
         "id": 1,
-        "name": "Recepção",
+        "name": "",
         "description": "",
-        "image": "/images/logo.png"
+        "image": "/images/c1.jpeg"
       },
       {
         "id": 2,
-        "name": "Consultorio",
+        "name": "",
         "description": "",
-        "image": "/images/logo.png"
+        "image": "/images/c2.jpeg"
       },
       {
         "id": 3,
-        "name": "Casa de banho",
+        "name": "",
         "description": "",
-        "image": "/images/logo.png"
+        "image": "/images/c3.jpeg"
+      },
+      {
+        "id": 4,
+        "name": "",
+        "description": "",
+        "image": "/images/c4.jpeg"
+      },
+      {
+        "id": 5,
+        "name": "",
+        "description": "",
+        "image": "/images/c5.jpeg"
+      },
+      {
+        "id": 6,
+        "name": "",
+        "description": "",
+        "image": "/images/c6.jpeg"
       }
     ]
   },

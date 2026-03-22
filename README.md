@@ -11,3 +11,9 @@ Run Dev
 ```bash
 pnpm dev
 ```
+
+Run Production
+```bash
+pnpm build 
+npx serve dist
+```
