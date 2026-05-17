@@ -17,3 +17,9 @@ Run Production
 pnpm build 
 npx serve dist
 ```
+
+## Shortcuts
+
+React code - client/src/pages/Home.tsx
+Metadata - client/src/data/content.json
+CSS - client/src/index.css

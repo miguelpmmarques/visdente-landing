@@ -168,6 +168,12 @@
         "id": 1,
         "name": "",
         "description": "",
+        "image": "/images/c00.jpeg"
+      },
+      {
+        "id": 1,
+        "name": "",
+        "description": "",
         "image": "/images/c1.jpeg"
       },
       {
@@ -199,6 +205,30 @@
         "name": "",
         "description": "",
         "image": "/images/c6.jpeg"
+      },
+      {
+        "id": 7,
+        "name": "",
+        "description": "",
+        "image": "/images/c7.jpeg"
+      },
+      {
+        "id": 8,
+        "name": "",
+        "description": "",
+        "image": "/images/c8.jpeg"
+      },
+      {
+        "id": 9,
+        "name": "",
+        "description": "",
+        "image": "/images/c9.jpeg"
+      },
+      {
+        "id": 10,
+        "name": "",
+        "description": "",
+        "image": "/images/c10.jpeg"
       }
     ]
   },
