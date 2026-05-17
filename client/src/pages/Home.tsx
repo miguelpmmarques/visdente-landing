@@ -38,7 +38,7 @@ function useFadeIn() {
 function Navbar() {
   const { navbar } = content;
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border" style={{ background: "#ffffff" }}>
       <div className="container flex items-center justify-between h-16">
         <a href="#" className="flex items-center gap-2" style={{ textDecoration: 'none' }}>
           <img src="/images/favicon.ico" alt="Logo" className="w-8 h-8" />
