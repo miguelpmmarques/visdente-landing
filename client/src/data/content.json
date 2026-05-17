@@ -8,6 +8,7 @@
     "logo": "Visdente",
     "navLinks": [
       { "label": "Sobre nós", "href": "#about" },
+      { "label": "Acordos", "href": "#acordos" },
       { "label": "Equipa", "href": "#team" },
       { "label": "Tratamentos", "href": "#treatments" },
       { "label": "Fotografias", "href": "#photos" },
@@ -39,14 +40,23 @@
       "alt": "Hero section image"
     }
   },
+  "acordos": {
+    "section": "Acordos",
+    "headline": "Acordos com particulares",
+    "logos": [
+      { "src": "/images/adse.png", "alt": "ADSE", "url": "https://www.adse.pt" },
+      { "src": "/images/psp.png", "alt": "PSP", "url": "https://portalsocial.psp.pt/" },
+      { "src": "/images/cgd.png", "alt": "CGD", "url": "https://www.cgd.pt" },
+      { "src": "/images/multicare.png", "alt": "MULTICARE", "url": "https://www.multicare.pt" }
+    ]
+  },
   "about": {
     "section": "Sobre nós",
     "headline": "Clínica Dentária",
     "paragraphs": [
-      "[INSERIR TEXTO]",
-      ""
+      "Somos uma clínica de Medicina Dentária dedicada à promoção da saúde oral desde a prevenção até tratamentos mais avançados."
     ],
-    "quote": "[INSERIR TEXTO]"
+    "quote": "O nosso objectivo é oferecer e garantir tratamentos de qualidade, conforto e confiança a todos os nossos pacientes."
   },
   "team": {
     "section": "Equipa",
@@ -55,30 +65,30 @@
       {
         "id": 1,
         "name": "Paulo Marques",
-        "role": "Médico Dentista",
+        "role": "Médico Dentista e Diretor Clínico",
         "bio": "Licenciado pela Faculdade de Medicina\nUniversidade De Coimbra",
-        "image": "/images/logo.png"
+        "image": "/images/DrPaulo.jpeg"
       },
       {
         "id": 2,
         "name": "Paula Martins",
         "role": "Médica Dentista",
         "bio": "Licenciada pela Faculdade de Medicina\nUniversidade De Coimbra",
-        "image": "/images/logo.png"
+        "image": "/images/DrPaula.jpeg"
       },
       {
         "id": 3,
         "name": "Marisol Coelho",
-        "role": "Auxiliar de Saúde Oral",
+        "role": "Assistente Dentária",
         "bio": "",
-        "image": "/images/logo.png"
+        "image": "/images/AuxMarisol.jpeg"
       },
       {
         "id": 4,
         "name": "Fernanda Ribeiro",
-        "role": "Auxiliar de Saúde Oral",
+        "role": "Assistente Dentária",
         "bio": "",
-        "image": "/images/logo.png"
+        "image": "/images/AuxFernanda.jpeg"
       }
     ]
   },
@@ -89,98 +99,58 @@
     "items": [
       {
         "id": 1,
-        "name": "Odontopediatria",
-        "description": "Área da medicina dentária dedicada à prevenção e tratamento da saúde oral de bebés, crianças e adolescentes, acompanhando o desenvolvimento correto dos dentes."
+        "name": "DENTISTERIA",
+        "description": "A Dentisteria é a área da medicina dentária que se dedica a restaurar e manter os dentes naturais devido a cáries, fraturas ou desgaste, devolvendo a sua forma, a função e a estética."
       },
       {
         "id": 2,
-        "name": "Destartarização",
-        "description": "Limpeza profissional que remove o tártaro e a placa bacteriana acumulados nos dentes, ajudando a prevenir doenças das gengivas e cáries."
+        "name": "ENDODONTIA",
+        "description": "Área da medicina dentária que visa salvar o dente natural, evitando a sua extração.\n\nTrata o interior do dente (polpa dentária) onde estão os nervos e vasos sanguíneos, com o objetivo de recuperação do dente.\n\nPoderá ser necessário várias sessões e recorrendo sistemas mecanizados."
       },
       {
         "id": 3,
-        "name": "Periodontologia",
-        "description": "Especialidade que diagnostica e trata doenças das gengivas e dos tecidos que suportam os dentes."
+        "name": "ORTODONTIA",
+        "description": "Área da medicina dentária dedicada ao alinhamento dos dentes e à correção da posição dos maxilares, podendo ser realizada em qualquer idade.\n\nUtilizam-se aparelhos fixos ou removíveis para atingir os objetivos pretendidos. Previamente são necessárias radiografias dentárias, fotografias e modelos das arcadas dentárias para a realização do estudo ortodontico."
       },
       {
         "id": 4,
-        "name": "Restaurações",
-        "description": "Tratamento utilizado para reparar dentes danificados por cáries ou fraturas, devolvendo a sua forma, função e estética."
+        "name": "CIRURGIA ORAL",
+        "description": "Área da medicina dentária dedicada a procedimentos cirúrgicos envolvendo dentes, lesões e outras patologias da cavidade oral e estruturas associadas, entre os quais:\n\n- • Extrações dentárias\n- • Extração de dentes inclusos (sisos)\n- • Remoção de quistos e lesões de tecidos moles"
       },
       {
         "id": 5,
-        "name": "Branqueamentos",
-        "description": "Procedimento estético que clareia a cor natural dos dentes, tornando o sorriso mais branco e luminoso."
+        "name": "IMPLANTOLOGIA",
+        "description": "Área da medicina dentária dedicada à colocação de implantes dentários.\n\nOs implantes são pequenos parafusos de titânio colocados no osso que funcionam como raízes artificiais para suportar dentes perdidos e os tecidos envolventes (osso e tecidos moles).\n\nPodem ser implantes individuais ou reconstruções completas da arcada dentária."
       },
       {
         "id": 6,
-        "name": "Endodontias",
-        "description": "Tratamento do interior do dente (canal radicular) que remove infeções e permite salvar dentes que, de outra forma, teriam de ser extraídos."
+        "name": "PRÓTESE",
+        "description": "São dispositivos utilizados para substituir os dentes perdidos ou danificados.\n\n- • Removível: acrílica e esquelética\n- • Fixa: coroas individuais, pontes fixas em cerâmica e implantes."
       },
       {
         "id": 7,
-        "name": "Cirurgia Oral",
-        "description": "Conjunto de procedimentos cirúrgicos realizados na cavidade oral para tratar diferentes problemas dentários e ósseos."
+        "name": "PERIODONTOLOGIA",
+        "description": "Especialidade que previne, diagnostica e trata doenças que afetam as gengivas e os tecidos que suportam os dentes (osso e ligamento periodontal)."
       },
       {
         "id": 8,
-        "name": "Extracções",
-        "description": "Remoção de dentes que não podem ser recuperados ou que causam problemas de saúde oral."
+        "name": "OCLUSÃO",
+        "description": "Área da medicina dentária que se foca em todo o sistema estomatognático incluindo dentes, articulação temporomandibular (ATM), músculos e estruturas de suporte."
       },
       {
         "id": 9,
-        "name": "Extração de dentes inclusos",
-        "description": "Procedimento cirúrgico para remover dentes que não nasceram corretamente ou ficaram presos dentro do osso ou da gengiva."
+        "name": "ODONTOPEDIATRIA",
+        "description": "Área da medicina dentária dedicada à prevenção e tratamento da saúde oral de bebés, crianças e adolescentes, acompanhando o desenvolvimento correto dos dentes."
       },
       {
         "id": 10,
-        "name": "Aparelhos ortodônticos fixos",
-        "description": "Dispositivos colados aos dentes que corrigem o alinhamento dentário e a posição da mordida ao longo do tempo."
+        "name": "BRANQUEAMENTO",
+        "description": "Procedimento estético que clareia a cor natural dos dentes tornando o sorriso mais branco e luminoso.\n\nNão atua sobre coroas, facetas, restaurações e algumas manchas muito profundas."
       },
       {
         "id": 11,
-        "name": "Aparelhos ortodônticos removíveis",
-        "description": "Aparelhos que podem ser retirados pelo paciente e são usados para corrigir ou orientar o crescimento e alinhamento dos dentes."
-      },
-      {
-        "id": 12,
-        "name": "Prótese removível acrílica",
-        "description": "Próteses dentárias removíveis feitas em acrílico que substituem dentes perdidos e restauram a função mastigatória."
-      },
-      {
-        "id": 13,
-        "name": "Prótese removível esquelética",
-        "description": "Próteses removíveis com uma estrutura metálica resistente que oferecem maior estabilidade e conforto."
-      },
-      {
-        "id": 14,
-        "name": "Coroa fixas cerâmicas",
-        "description": "Peças dentárias em cerâmica colocadas sobre dentes danificados para restaurar a sua forma, resistência e estética."
-      },
-      {
-        "id": 15,
-        "name": "Pontes fixas em cerâmica",
-        "description": "Estruturas fixas que substituem um ou mais dentes em falta, apoiando-se nos dentes naturais adjacentes."
-      },
-      {
-        "id": 16,
-        "name": "Implantes",
-        "description": "Pequenos parafusos de titânio colocados no osso que funcionam como raízes artificiais para suportar dentes substitutos."
-      },
-      {
-        "id": 17,
-        "name": "Coroas cerâmicas sobre implantes",
-        "description": "Coroas dentárias em cerâmica colocadas sobre implantes para substituir dentes perdidos com um resultado natural."
-      },
-      {
-        "id": 18,
-        "name": "Reabilitações completas sobre implantes",
-        "description": "Tratamento que permite substituir todos os dentes de uma arcada através de próteses fixas suportadas por implantes."
-      },
-      {
-        "id": 19,
-        "name": "Radiologia oral (Ortopantomografia e CBCT/TAC)",
-        "description": "Exames de imagem que permitem visualizar dentes, ossos e estruturas da boca para um diagnóstico preciso e planeamento dos tratamentos."
+        "name": "RADIOLOGIA",
+        "description": "Exames de imagem que permitem visualizar e estudar dentes, tratamentos, estrutura óssea e cavidade oral contribuindo para um diagnóstico preciso e planeamento de tratamentos:\n\n- • Rx intraoral\n- • Ortopantomografia\n- • CBCT/TAC"
       }
     ]
   },
@@ -188,6 +158,12 @@
     "section": "Clinica",
     "headline": "Fotografias da Clinica",
     "items": [
+      {
+        "id": 1,
+        "name": "",
+        "description": "",
+        "image": "/images/c0.jpeg"
+      },
       {
         "id": 1,
         "name": "",
@@ -242,7 +218,7 @@
   "contact": {
     "section": "Contacto",
     "headline": "Horário",
-    "description": "Dias Úteis: 9:00 - 19:00\nSábado: 9:00 - 12:00\nDomingo: Encerrado",
+    "description": "**Dias Úteis:**\n9:00 - 12:30 e 14:30 - 19:00\n**Sábado com marcação prévia:**\n9:00 - 12:00\n**Domingo:**\nEncerrado",
     "phone": "+351 232 426 396",
     "mobilephone": "+351 965 407 586"
   },

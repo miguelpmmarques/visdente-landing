@@ -7,6 +7,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Smartphone, MapPin, Phone} from "lucide-react";
 import content from "@/data/content.json";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import "./PhotosSection.css"; // we’ll create this
 
 
@@ -65,7 +68,7 @@ function Navbar() {
 function HeroSection() {
   const { hero } = content;
   return (
-    <section id="hero" className="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <section id="hero" className="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden" style={{ background: "#ffffff" }}>
       <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left: Text */}
@@ -83,9 +86,9 @@ function HeroSection() {
               <br />
               {hero.headline.line3}
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
+            {/* <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
               {hero.description}
-            </p>
+            </p> */}
             <div className="flex flex-wrap gap-4">
               {hero.buttons.map((btn) => (
                 <a
@@ -103,11 +106,12 @@ function HeroSection() {
               ))}
             </div>
           </div>
+          
           {/* Right: Hero image */}
           <div className="relative flex justify-center">
             <div
               className="absolute -inset-4 rounded-3xl opacity-30"
-              style={{ background: "#FFF5E6" }}
+              style={{ background: "#ffffff" }}
             />
             <img
               src={hero.heroImage.src}
@@ -126,7 +130,7 @@ function DescriptionSection() {
   const { about } = content;
   const ref = useFadeIn();
   return (
-    <section id="about" className="py-20 md:py-28" style={{ background: "#ffffff" }}>
+    <section id="about" className="py-20 md:py-28">
       <div className="container">
         <div ref={ref} className="fade-in-up max-w-3xl mx-auto text-center">
           <span className="section-label block mb-4">{about.section}</span>
@@ -149,13 +153,57 @@ function DescriptionSection() {
             className="mt-10 pl-5 text-left border-l-4 italic text-foreground text-xl font-light"
             style={{ borderColor: "#890000", fontFamily: "var(--font-display)" }}
           >
-            "{about.quote}"
+            {about.quote}
           </blockquote>
         </div>
       </div>
     </section>
   );
 }
+function AcordosSection() {
+  const { acordos } = content;
+  const ref = useFadeIn();
+  return (
+    <section id="acordos" className="py-20 md:py-28" style={{ background: "#ffffff" }}>
+      <div className="container">
+        <div ref={ref} className="fade-in-up max-w-3xl mx-auto text-center">
+          <span className="section-label block mb-4">{acordos.section}</span>
+          <h2
+            className="text-4xl md:text-5xl font-bold leading-tight mb-8"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {acordos.headline}
+          </h2>
+          <div
+            className="w-12 h-1 mx-auto mb-8 rounded-full"
+            style={{ background: "#890000" }}
+          />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-12 lg:gap-x-20">
+            {acordos.logos.map((logo, index) => (
+              <a
+                key={index}
+                href={logo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-3 transition-all duration-200 hover:scale-105 group"
+                title={`Visitar site da ${logo.alt}`}
+              >
+                <div className="flex items-center justify-center h-[120px] w-full">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-w-[200px] max-h-[150px] w-auto h-auto object-contain"
+                  />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 // ─── Team Section ─────────────────────────────────────────────────────────
 function TeamSection() {
@@ -316,9 +364,11 @@ function TreatmentsSection() {
                     {currentTreatment.name}
                   </h3>
 
-                  <p className="text-muted-foreground leading-relaxed">
-                    {currentTreatment.description}
-                  </p>
+                  <div className="text-muted-foreground leading-relaxed text-left">
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  {currentTreatment.description}
+                </ReactMarkdown>
+                </div>
                 </div>
               </div>
 
@@ -562,7 +612,9 @@ function ContactSection() {
               {contact.headline}
             </h2>
             <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
+            <ReactMarkdown>
               {contact.description}
+            </ReactMarkdown>
             </p>
           </div>
 
@@ -644,6 +696,7 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <DescriptionSection />
+        <AcordosSection />
         <TeamSection />
         <TreatmentsSection />
         <PhotosSection />
