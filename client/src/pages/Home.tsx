@@ -582,7 +582,7 @@ function InfoRow({
     <div className="flex gap-4 items-start">
       <div
         className="mt-0.5 w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
-        style={{ background: "#FFF5E6", color: "#890000" }}
+        style={{ background: "#F5F5F7", color: "#890000" }}
       >
         {icon}
       </div>
@@ -625,7 +625,7 @@ function ContactSection() {
                 <div className="flex items-center justify-center sm:justify-start gap-3 mb-3">
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ background: "#FFF5E6", color: "#890000" }}
+                    style={{ background: "#F5F5F7", color: "#890000" }}
                   >
                     <Phone size={20} />
                   </div>
@@ -642,7 +642,7 @@ function ContactSection() {
                 <div className="flex items-center justify-center sm:justify-start gap-3 mb-3">
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ background: "#FFF5E6", color: "#890000" }}
+                    style={{ background: "#F5F5F7", color: "#890000" }}
                   >
                     <Smartphone size={20} />
                   </div>
@@ -669,7 +669,7 @@ function ContactSection() {
 function Footer() {
   const { site, footer } = content;
   return (
-    <footer className="border-t border-border py-8">
+    <footer className="border-t border-border py-8" style={{ background: "#ffffff" }}>
       <div className="container flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
         <span style={{ fontFamily: "var(--font-display)" }} className="font-semibold text-foreground">
           {site.name}

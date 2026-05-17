@@ -1,6 +1,6 @@
 /*
  * Design Philosophy: Refined Minimal — Scandinavian minimalism
- * Updated Color Palette: Primary #890000 (deep red), Secondary #FFF5E6 (cream), Black
+ * Updated Color Palette: Primary #890000 (deep red), Secondary #F5F5F7 (cream), Black
  * Typography: Fraunces (display serif) + Nunito Sans (body)
  * Layout: Asymmetric hero, centered sections max-w-1100, 3-col team grid
  * Interactions: 200–300ms ease-in-out transitions, gentle hover shadows
@@ -41,23 +41,23 @@
 
 :root {
   --radius: 0.5rem;
-  /* Primary: Deep Red #890000, Secondary: Cream #FFF5E6, Black */
-  --background: #FFF5E6;
+  /* Primary: Deep Red #890000, Secondary: Cream #F5F5F7, Black */
+  --background: #F5F5F7;
   --foreground: #000000;
   --card: #FFFFFF;
   --card-foreground: #000000;
   --popover: #FFFFFF;
   --popover-foreground: #000000;
   --primary: #890000;
-  --primary-foreground: #FFF5E6;
-  --secondary: #FFF5E6;
+  --primary-foreground: #F5F5F7;
+  --secondary: #F5F5F7;
   --secondary-foreground: #000000;
   --muted: #F0E6DC;
   --muted-foreground: #666666;
   --accent: #890000;
-  --accent-foreground: #FFF5E6;
+  --accent-foreground: #F5F5F7;
   --destructive: #DC2626;
-  --destructive-foreground: #FFF5E6;
+  --destructive-foreground: #F5F5F7;
   --border: #E5D9CC;
   --input: #FFFFFF;
   --ring: #890000;
