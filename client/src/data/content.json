@@ -42,7 +42,7 @@
   },
   "acordos": {
     "section": "Acordos",
-    "headline": "Acordos com particulares",
+    "headline": "Acordos com Entidades",
     "logos": [
       { "src": "/images/adse.png", "alt": "ADSE", "url": "https://www.adse.pt" },
       { "src": "/images/psp.png", "alt": "PSP", "url": "https://portalsocial.psp.pt/" },
