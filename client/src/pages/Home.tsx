@@ -452,7 +452,7 @@ function PhotosSection() {
   const currentPhoto = photos.items[currentIndex];
 
   return (
-    <section className={`photos-section ${fadeIn ? "fade-in" : ""}`}>
+    <section id="photos" className={`photos-section ${fadeIn ? "fade-in" : ""}`}>
       <div className="container">
         <div className="header">
           <span className="section-label">{photos.section}</span>
