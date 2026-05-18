@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "Visdente",
-    "tagline": "Clinica Médica Dentaria ",
+    "tagline": "Clínica Médica Dentária",
     "year": 2026
   },
   "navbar": {
@@ -20,7 +20,7 @@
     "section": "Bem-vindo",
     "headline": {
       "line1": "Visdente",
-      "line2Italic": "Clinica Médica Dentaria"
+      "line2Italic": "Clínica Médica Dentária"
     },
     "description": "[INSERIR TEXTO]",
     "buttons": [
@@ -155,8 +155,8 @@
     ]
   },
   "photos":{
-    "section": "Clinica",
-    "headline": "Fotografias da Clinica",
+    "section": "Clínica",
+    "headline": "Fotografias da Clínica",
     "items": [
       {
         "id": 1,
@@ -235,7 +235,7 @@
   "location": {
     "section": "Encontre-nos",
     "headline": "A nossa localização",
-    "description": "Visite-nos na nossa clinica em Viseu, Portugal. Estamos localizados no coração do centro da cidade.",
+    "description": "Visite-nos na nossa Clínica em Viseu, Portugal. Estamos localizados no coração do centro da cidade.",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.636712536953!2d-7.921680324398708!3d40.659937871401446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2337b29545be59%3A0x88343d4696f09be2!2sCl%C3%ADnica%20M%C3%A9dica%20Dent%C3%A1ria%20Visdente%20Lda.!5e0!3m2!1spt-PT!2snl!4v1773585674855!5m2!1spt-PT!2snl",
     "address": {
       "street": "Edifício Atrium D. João, Praça Dom João 4, Sala A",
